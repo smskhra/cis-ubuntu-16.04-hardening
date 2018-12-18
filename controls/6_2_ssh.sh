@@ -9,6 +9,7 @@ function set_confs {
   sed -i 's/.*PermitRootLogin.*/PermitRootLogin no/g' "$SSHDFILE"
   
   if ! grep -q "^MaxAuthTries" "$SSHDFILE" 2> /dev/null; then
+    echo -e "\n" >> "$SSHDFILE"
     echo "MaxAuthTries 4" >> "$SSHDFILE"
   fi
   
