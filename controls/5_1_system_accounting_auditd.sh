@@ -11,7 +11,7 @@ function ensure_auditing_for_processes_that_start_prior_to_auditd_is_enabled {
    log_info "$(tput setaf 1)Failed!$(tput sgr 0)\n"
    log_info "$(tput setaf 3)Applying the fixes!!$(tput sgr 0)\n"
    sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="audit=1"/g' /etc/default/grub              	
-   /usr/sbin/update-grub
+   /usr/sbin/update-grub &> /dev/null
    log_info "$(tput setaf 2)Passed!$(tput sgr 0)\n"
   fi
 
