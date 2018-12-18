@@ -1,6 +1,6 @@
 function set_permission {
   mkdir -p ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)
-  cp -a $SSHDFILE ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)/sshd-hardening-$(hostname)-$(date +%Y"-"%m"-"%d)
+  cp -a $SSHDFILE ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)/sshd-hardening-$(hostname)-$(date +%Y"-"%m"-"%d).conf
   chmod 600 $SSHDFILE
 }
 

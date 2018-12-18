@@ -60,6 +60,6 @@ function c_5_1 {
   set_conf
   add_rules
 
-  systemctl enable auditd.service
-  systemctl restart auditd.service
+  systemctl enable auditd.service &>/dev/null
+  systemctl restart auditd.service &>/dev/null
 }

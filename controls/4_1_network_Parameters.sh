@@ -1,7 +1,7 @@
 
 function set_conf_sysctl {
   mkdir -p ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)
-  cp -a $SYSCTL ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)/sysctl-hardening-$(hostname)-$(date +%Y"-"%m"-"%d)
+  cp -a $SYSCTL ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)/sysctl-hardening-$(hostname)-$(date +%Y"-"%m"-"%d).conf
   cp ./confs/sysctl.def $SYSCTL
   sed -e '/et.ipv4.conf.all.send_redirects/ s/^#*/#/' -i $SYSCTL 
   sed -e '/net.ipv4.conf.default.send_redirects/ s/^#*/#/' -i $SYSCTL 
