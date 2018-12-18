@@ -16,13 +16,14 @@ function allow_deny {
 
   chown root.root /etc/cron.allow
   chown root.root /etc/at.allow
+  ls -l /var/spool/cron/crontabs/ | grep -v total |awk '{print $9}' > /etc/cron.allow
+  log_info "$(tput setaf 2)Passed!$(tput sgr 0)\n" 
 }
 
-function c_5_1 {
-  log_info "Started hardening section 5.1: Configure cron"
+function c_6_1 {
+  log_info "Started hardening section 6.1: Configure cron"
   set_permissions
   allow_deny
- 
-  initctl reload-configuration
+  
+  systemctl restart cron.service
 }
-

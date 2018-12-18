@@ -19,15 +19,14 @@ function passwd_files {
 
   chown root.root /etc/gshadow-
   chmod 600 /etc/gshadow-
+  log_info "$(tput setaf 2)Passed!$(tput sgr 0)\n"
 }
 
   
 
 
-function c_6_1 {
-  log_info "Started hardening section 6.1: System file permissions"
+function c_7_1 {
+  log_info "Started hardening section 7.1: System file permissions"
   passwd_files
 
-  initctl reload-configuration
 }
-

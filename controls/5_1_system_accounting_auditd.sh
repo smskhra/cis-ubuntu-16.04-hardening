@@ -18,7 +18,7 @@ function ensure_auditing_for_processes_that_start_prior_to_auditd_is_enabled {
 }
 
 function set_conf {
-  if [[ "$(grep space_left_action /etc/audit/auditd.conf 2>/dev/null)" = "space_left_action = SYSLOG" && "$(grep action_mail_acct /etc/audit/auditd.conf 2>/dev/null)" = "action_mail_acct = root" && "$(grep admin_space_left_action /etc/audit/auditd.conf 2>/dev/null)" = "admin_space_left_action = IGNORE" ]];then 
+  if [[ "$(grep -w space_left_action /etc/audit/auditd.conf 2>/dev/null)" = "space_left_action = SYSLOG" && "$(grep -w action_mail_acct /etc/audit/auditd.conf 2>/dev/null)" = "action_mail_acct = root" && "$(grep -w admin_space_left_action /etc/audit/auditd.conf 2>/dev/null)" = "admin_space_left_action = IGNORE" ]];then 
     log_info "Ensure system is disabled when audit logs are full\n"
     log_info "$(tput setaf 2)Passed!$(tput sgr 0)\n"
  else
@@ -54,7 +54,7 @@ function add_rules {
 }
 
 function c_5_1 {
-  log_info "Started hardening section 5.1: Configure system accounting(auditd)"
+  log_info "Started hardening section 5.1: Configure system accounting(auditd)\n"
   install_auditd
   ensure_auditing_for_processes_that_start_prior_to_auditd_is_enabled 
   set_conf
