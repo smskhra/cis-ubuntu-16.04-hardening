@@ -30,6 +30,9 @@ function set_confs {
 
   if ! grep -q "^ClientAliveCountMax" "$SSHDFILE" 2> /dev/null; then
     echo "ClientAliveCountMax 2" >> "$SSHDFILE"
+    else
+    sed -e '/ClientAliveCountMax/ s/^#*/#/g' -i "$SSHDFILE"
+    echo "ClientAliveCountMax 2" >> "$SSHDFILE"
   fi
 
 
