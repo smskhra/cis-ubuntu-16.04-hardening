@@ -22,14 +22,14 @@ function set_confs {
   fi
 
   if ! grep -q "^ClientAliveInterval" "$SSHDFILE" 2> /dev/null; then
-    echo "ClientAliveInterval 900" >> "$SSHDFILE"
+    echo "ClientAliveInterval 1200" >> "$SSHDFILE"
   else
     sed -e '/ClientAliveInterval/ s/^#*/#/g' -i "$SSHDFILE"
-    echo "ClientAliveInterval 900" >> "$SSHDFILE"
+    echo "ClientAliveInterval 1200" >> "$SSHDFILE"
   fi
 
   if ! grep -q "^ClientAliveCountMax" "$SSHDFILE" 2> /dev/null; then
-    echo "ClientAliveCountMax 0" >> "$SSHDFILE"
+    echo "ClientAliveCountMax 2" >> "$SSHDFILE"
   fi
 
 
