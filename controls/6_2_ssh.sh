@@ -1,6 +1,6 @@
 function set_permission {
   mkdir -p ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)
-  cp -a $SSHDFILE ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)/sshd-hardening-$(hostname)-$(date +%Y"-"%m"-"%d).conf
+  cp -a $SSHDFILE ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)/sshd-hardening-$(hostname)-`date +%d"-"%m"-"%Y"-"%H":"%M":"%S`.conf
   chmod 600 $SSHDFILE
 }
 
@@ -38,6 +38,7 @@ function set_confs {
 
   sed -i 's/.*LoginGraceTime.*/LoginGraceTime 120/g' "$SSHDFILE"
   log_info "$(tput setaf 2)Passed!$(tput sgr 0)\n" 
+  log_info "Config Backup path $(tput setaf 2) ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)$(tput sgr 0)\n"
 
 }
  

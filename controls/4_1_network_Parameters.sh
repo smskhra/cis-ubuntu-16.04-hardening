@@ -1,7 +1,7 @@
 
 function set_conf_sysctl {
   mkdir -p ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)
-  cp -a $SYSCTL ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)/sysctl-hardening-$(hostname)-$(date +%Y"-"%m"-"%d).conf
+  cp -a $SYSCTL ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)/sysctl-hardening-$(hostname)-`date +%d"-"%m"-"%Y"-"%H":"%M":"%S`.conf
   cp ./confs/sysctl.def $SYSCTL
   sed -e '/et.ipv4.conf.all.send_redirects/ s/^#*/#/' -i $SYSCTL 
   sed -e '/net.ipv4.conf.default.send_redirects/ s/^#*/#/' -i $SYSCTL 
@@ -23,6 +23,7 @@ function set_conf_sysctl {
 function add_rules_sysctl {
   cat ./confs/sysctl.conf >> $SYSCTL
   log_info "$(tput setaf 2)Passed!$(tput sgr 0)\n"
+  log_info "Configs backup path $(tput setaf 2) ~/hardening-$(hostname)-$(date +%Y"-"%m"-"%d)$(tput sgr 0)\n"
 }
 
 function c_4_1 {
